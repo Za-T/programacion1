@@ -26,19 +26,3 @@ def validar_str (valor: str, op1: str, op2: str) -> str:
         cadena = (input (f"Error, valor ingresado no valido. Ingrese un nuevo valor ({op1},{op2}): "))
     
     return cadena
-
-#ej 1. DOCUMENTAR
-
-def pedir_nombres ():
-
-    nombres = [0] * 10
-
-    for i in range (len(nombres)):
-        nombres [i] = input ("Ingrese nombre: ")
-        
-    for i in range (len(nombres)):
-        print (nombres [i])
-    
-
-print (pedir_nombres())
-
