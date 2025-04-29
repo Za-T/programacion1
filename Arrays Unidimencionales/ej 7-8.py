@@ -43,7 +43,7 @@ def promediar_edad (edades:list) ->int:
 
 def menu_estadisticas ():
 
-    print ("Menu de Opciones: " \
+    print ("Menu de Opciones: \n" \
     "\n1.Lista de los datos de los usuarios de México." \
     "\n2.Listar los nombre, mail y teléfono de los usuarios de Brasil." \
     "\n3.Listar los datos del/los usuario/s más joven/es." \
@@ -65,4 +65,4 @@ def menu_estadisticas ():
             print (promediar_edad(edades))
 
 
-menu_estadisticas()
+print (menu_estadisticas())
