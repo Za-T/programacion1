@@ -7,4 +7,4 @@ def calcular_fibonacci (numero:int) -> int:
     else:
         return calcular_fibonacci (numero - 1) + calcular_fibonacci (numero - 2)
     
-print (calcular_fibonacci (9))
+print (calcular_fibonacci (8))
