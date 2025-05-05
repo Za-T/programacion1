@@ -2,6 +2,9 @@ from biblioteca_funciones import *
 
 def buscar_menor_edad_nombres (edad_lista: list, nombre_lista:list):
 
+    '''La funcion recibe por parámetro la lista de edades, busca a las 
+        personas de menor edad (puede ser más de una) y las retorna.'''
+
     flag = True
 
     if flag == True:
