@@ -3,6 +3,9 @@ from biblioteca_funciones import *
 
 def armar_lista_numeros ()->list:
 
+    '''Le pide al usuario la posicion en la lista y el valor a guardar,"
+    permite armar una lista de maximo 10 valores.'''
+
     lista_numeros = [0] * 10
 
     respuesta = "s"

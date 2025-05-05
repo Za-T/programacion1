@@ -27,9 +27,11 @@ def validar_str (valor: str, op1: str, op2: str) -> str:
     
     return cadena
 
-#ej 1. DOCUMENTAR
+#ej 1. 
 
 def pedir_nombres ():
+
+    '''Pide que el usuario ingrese nombres y los guarda en una lista.'''
 
     nombres = [0] * 10
 
