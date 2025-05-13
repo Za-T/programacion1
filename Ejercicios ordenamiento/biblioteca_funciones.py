@@ -73,7 +73,7 @@ def buscar_menor_lista (lista_num:list) -> int:
     return edad_menor
 
 def ordenar_lista_ascendente (lista:list) -> list:
-     
+ 
     for i in range(len(lista)-1):
         for j in range (i+1,len(lista)):
             if (lista [i] > lista[j]):
@@ -82,6 +82,11 @@ def ordenar_lista_ascendente (lista:list) -> list:
                 lista [j] = aux
     
     return lista 
+
+def auxiliar_listas (lista:list,i,j):
+    aux = lista [i]
+    lista [i] = lista [j]
+    lista [j] = aux
 
 def mostrar_lista (lista:list):
 
