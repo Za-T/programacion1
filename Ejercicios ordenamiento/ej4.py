@@ -107,6 +107,7 @@ def mostrar_mxc_ordenado_nombre (nombres: list, telefonos:list, mail:list,adress
             for j in range (i+1, len(nombres)):
 
                 if nombres[i] > nombres[j]:
+
                     auxiliar_listas(telefonos, i, j)
                     auxiliar_listas(mail, i, j)
                     auxiliar_listas(adress, i, j)
@@ -114,7 +115,23 @@ def mostrar_mxc_ordenado_nombre (nombres: list, telefonos:list, mail:list,adress
                     auxiliar_listas(region, i, j)
                     auxiliar_listas(edades, i, j)
        
+            #no funciona para el primer sort
+
             print(f"Nombre: {nombres[i]}\nTelefono:{ telefonos [i]}\nMail:{ mail [i]}\nDireccion: {adress [i]}\nCodigo Postal: {postalzip [i]}\nRegion: {region [i]}\nPais: {country [i]}\nEdad: {edades [i]}\n")
+
+def mostrar_datos_joven_asc (nombres: list, telefonos:list, mail:list,adress:list,postalzip:list,region:list,country:list,edades:list):
+
+    flag = True
+
+    for i in range (len(edades)-1):
+
+        if flag == True:
+           edad_menor = edades [i]
+           flag = False
+        
+    
+
+
 
 def seleccionar_menu_estadisticas ():
 
@@ -152,6 +169,9 @@ def seleccionar_menu_estadisticas ():
                 mostrar_italianos_mayores_40 (nombres, telefonos, mails, country, edades)
             case 8:
                 mostrar_mxc_ordenado_nombre (nombres, telefonos, mails, address, postalZip, region, country, edades)
+            case 9:
+                mostrar_datos_joven_asc ()
+
 
         repetir = validar_str ("si quiere solicitar otra opcion", "s", "n")
 
