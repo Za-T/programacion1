@@ -25,12 +25,10 @@ def radar_del_tesoro ():
 
         
         x = int (input ("Ingrese coordenada de fila (0-4): "))
-
         if x < 0 or x > 4:
             x = int(input("Error. Ingrese coordenada de fila (0-4): "))
 
         y = int (input ("Ingrese coordenada de columna (0-4): "))
-
         if y < 0 or y > 4:
             y = int(input("Error. Ingrese coordenada de columna (0-4): "))
 
