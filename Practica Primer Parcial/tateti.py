@@ -19,7 +19,6 @@ def validar_int (minimo:int, maximo:int, valor:str)-> int:
         numero = int (input(f"Error, {valor} no valido. Ingrese en que {valor} va acolocar ({minimo}-{maximo}): "))
     return numero
 
-
 def mostrar_tablero (lista_brut:list):
 
     for i in range (len(lista_brut)):
