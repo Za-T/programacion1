@@ -1,6 +1,6 @@
-tablero = [[None,None,None],
-           [None,None,None],
-           [None,None,None],]
+tablero = [["O",None,"X"],
+           ["X","O","X"],
+           ["O",None,"O"],]
 
 def validar_pieza ()-> str:
 
@@ -43,22 +43,45 @@ def colocar_pieza (tablero:list, tipo_pieza:str):
     tablero [fila][columna] = tipo_pieza
         
 def comprobar_estado (tablero:list):
-    print ("g")
+
+    estado = True
+
+    while estado == True:
+
+        for i in range (len (tablero)):
+
+            if (tablero [i] [0] == tablero [i] [1]) and (tablero [i][1] == tablero [i][2]):
+                print (f"Gano {tablero[i][0]}")
+                estado = False
+                
+            elif (tablero [0] [i] == tablero [1] [i]) and (tablero [1][i] == tablero [2][i]):
+                print (f"Gano {tablero[0] [i]}")
+                estado = False
+
+            elif (tablero [0] [0] == tablero [1] [1]) and (tablero [1][1] == tablero [2][2]):
+                print (f"Gano {tablero[0] [0]}")
+                estado = False
+            
+            
+    
+            
 
 def jugar_tateti (tablero:list):
 
-    repetir = True
+    repetir = "s"
 
-    while repetir == True:
+    while repetir == "s":
 
         mostrar_tablero (tablero)
 
-        pieza = validar_pieza ()
+        '''pieza = validar_pieza ()
 
         colocar_pieza (tablero, pieza)
     
-        mostrar_tablero (tablero)
+        mostrar_tablero (tablero)'''
 
-        repetir = False
+        comprobar_estado (tablero)
 
-jugar_tateti (tablero)
+        repetir = input ("quiere agregar otra pieza? (s-n)")
+
+jugar_tateti(tablero)
