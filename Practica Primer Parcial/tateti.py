@@ -1,6 +1,6 @@
-tablero = [["O",None,"X"],
-           ["X","O","X"],
-           ["O",None,"O"],]
+tablero = [[None,None,None],
+           [None,None,None],
+           [None,None,None],]
 
 def validar_pieza ()-> str:
 
@@ -44,27 +44,16 @@ def colocar_pieza (tablero:list, tipo_pieza:str):
         
 def comprobar_estado (tablero:list):
 
-    estado = True
-
-    while estado == True:
-
-        for i in range (len (tablero)):
-
-            if (tablero [i] [0] == tablero [i] [1]) and (tablero [i][1] == tablero [i][2]):
-                print (f"Gano {tablero[i][0]}")
-                estado = False
-                
-            elif (tablero [0] [i] == tablero [1] [i]) and (tablero [1][i] == tablero [2][i]):
-                print (f"Gano {tablero[0] [i]}")
-                estado = False
-
-            elif (tablero [0] [0] == tablero [1] [1]) and (tablero [1][1] == tablero [2][2]):
+    if (tablero [0] [0] == tablero [1] [1]) and (tablero [1][1] == tablero [2][2]):
                 print (f"Gano {tablero[0] [0]}")
-                estado = False
-            
-            
     
-            
+    for i in range (len (tablero)):
+
+        if (tablero [i] [0] == tablero [i] [1]) and (tablero [i][1] == tablero [i][2]):
+                print (f"Gano {tablero[i][0]}")
+                
+        elif (tablero [0] [i] == tablero [1] [i]) and (tablero [1][i] == tablero [2][i]):
+                print (f"Gano {tablero[0] [i]}")
 
 def jugar_tateti (tablero:list):
 
@@ -74,11 +63,11 @@ def jugar_tateti (tablero:list):
 
         mostrar_tablero (tablero)
 
-        '''pieza = validar_pieza ()
+        pieza = validar_pieza ()
 
         colocar_pieza (tablero, pieza)
     
-        mostrar_tablero (tablero)'''
+        mostrar_tablero (tablero)
 
         comprobar_estado (tablero)
 
