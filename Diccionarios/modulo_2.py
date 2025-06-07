@@ -13,22 +13,15 @@ def promediar_notas (datos:list):
 
         #por cada nota
         for j in range (len(datos [i]["notas"])):
-
             suma_notas += datos[i]["notas"][j]
 
         cant_notas = len(datos [i]["notas"])
 
-        promedio = suma_notas / cant_notas
+        promedio = suma_notas // cant_notas
 
         datos [i]["promedio"] = promedio
 
-        print (datos)
-
-        mostrar_keys (datos, key_list)
-
-        print ("\n")
-
-promediar_notas (estudiantes)
+    mostrar_keys (datos, key_list)
 
         
 

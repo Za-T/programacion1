@@ -1,6 +1,7 @@
 from estudiantes import *
 from biblioteca_funciones import *
 from modulo_1 import *
+from modulo_2 import *
 
 def seleccionar_menu_estadisticas ():
 
@@ -25,7 +26,7 @@ def seleccionar_menu_estadisticas ():
             case 1:
                 listar_apellido_asc (estudiantes)
             case 2:
-                print()
+                promediar_notas (estudiantes)
             case 4:
                 print ()
             case 5:
