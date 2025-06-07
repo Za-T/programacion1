@@ -104,3 +104,16 @@ def mostrar_lista (lista:list):
 
     for i in range(len(lista)):
         print (f"\n{lista[i]}")
+
+def promediar_item (datos, key) -> int:
+
+    suma_value = 0
+
+    #por cada elemento de la lista
+    for e_dic in datos:
+        suma_value += e_dic[f"{key}"]
+
+    cant = len(datos)
+    promedio = suma_value // cant
+
+    return promedio

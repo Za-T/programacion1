@@ -1,6 +1,4 @@
 from biblioteca_funciones import *
-from estudiantes import *
-
 
 def promediar_notas (datos:list):
 
