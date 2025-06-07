@@ -2,6 +2,10 @@ tablero = [[None,None,None],
            [None,None,None],
            [None,None,None],]
 
+tablero = [["X",None,None],
+           [None,"X",None],
+           [None,None,No"X"],]
+
 def validar_pieza ()-> str:
 
     pieza = input("Ingrese que pieza va acolocar (X-O): ")

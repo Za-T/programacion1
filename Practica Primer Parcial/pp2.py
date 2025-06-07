@@ -1,15 +1,24 @@
 
 def recorrer_columnas (matriz:list):
-
-    for i in range (4):
+    #columna
+    for i in range(len(matriz[0])):
+        #fila
+        for j in range(len(matriz)-2):
         
-        valor_1 = matriz [i][0]
+            if matriz[j][i] == matriz[j+1][i] == matriz[j+2][i]:
+                print (f"El numero {matriz[j][i]} esta repetido")
 
+
+               
         
+
 
 matriz = [
+        [5, 2, 7, 2],
+        [5, 2, 7, 4],
         [5, 2, 3, 4],
-        [5, 2, 7, 8],
-        [2, 2, 3, 1],
         [1, 6, 7, 4]
         ]
+
+recorrer_columnas (matriz)
+
