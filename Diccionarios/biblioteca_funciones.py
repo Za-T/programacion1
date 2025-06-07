@@ -88,7 +88,13 @@ def auxiliar_listas (lista:list,i,j):
     lista [i] = lista [j]
     lista [j] = aux
 
+def auxiliar_listas_dic (lista:list, clave:str, i:int,j:int):
+    aux = lista [i] [clave]
+    lista [i] [clave] = lista [j] [clave]
+    lista [j] [clave] = aux
+
+
 def mostrar_lista (lista:list):
 
     for i in range(len(lista)):
-        print (lista[i])
+        print (f"\n{lista[i]}")
