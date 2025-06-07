@@ -93,6 +93,12 @@ def auxiliar_listas_dic (lista:list, clave:str, i:int,j:int):
     lista [i] [clave] = lista [j] [clave]
     lista [j] [clave] = aux
 
+def mostrar_keys (datos:list,key_list:list):
+
+    for i in range(len(datos)):
+        for j in range (len(key_list)):
+            print (f"{key_list[j]}: {datos[i][key_list[j]]}")
+        print ("\n")
 
 def mostrar_lista (lista:list):
 
