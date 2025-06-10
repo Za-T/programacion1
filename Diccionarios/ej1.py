@@ -4,6 +4,9 @@ from modulo_1 import *
 from modulo_2 import *
 from modulo_3 import *
 from modulo_4 import *
+from modulo_5 import *
+from modulo_6 import *
+from modulo_7 import *
 
 def seleccionar_menu_estadisticas ():
 
@@ -28,13 +31,13 @@ def seleccionar_menu_estadisticas ():
             case 1:
                 listar_apellido_asc (estudiantes)
             case 2:
-                promediar_notas (estudiantes)
+                mostrar_promedio_notas (estudiantes)
             case 3:
                 listar_est_ing_inf (estudiantes)
             case 4:
                 promediar_edad  (estudiantes)
             case 5:
-                print ()
+                informar_mayor_prom (estudiantes)
             case 6:
                 print ()
             case 7:
