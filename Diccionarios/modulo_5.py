@@ -1,7 +1,7 @@
 from estudiantes import *
 from biblioteca_funciones import *
 
-def asignar_valores (valor) -> dict:
+def asignar_valores_prom (valor) -> dict:
     
     datos_prom = {
         "promedio_mayor" : valor ["promedio"],
@@ -20,16 +20,16 @@ def informar_mayor_prom (datos:list):
         if primer == True:
 
             try:
-                datos_prom = asignar_valores (e_estudiantes)
+                datos_prom = asignar_valores_prom (e_estudiantes)
                 primer = False
 
             except KeyError:
                 promediar_notas (datos)
-                datos_prom = asignar_valores (e_estudiantes)
+                datos_prom = asignar_valores_prom (e_estudiantes)
                 primer = False
 
         elif e_estudiantes ["promedio"] > datos_prom ["promedio_mayor"]:
-            datos_prom = asignar_valores (e_estudiantes)
+            datos_prom = asignar_valores_prom (e_estudiantes)
             
 
     print (f"El estudiante con mayor promedio se llama {datos_prom ["promedio_mayor_n"]} {datos_prom ["promedio_mayor_a"]}, y su promedio es de {datos_prom ["promedio_mayor"]}.")

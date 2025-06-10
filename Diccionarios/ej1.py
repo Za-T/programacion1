@@ -41,7 +41,7 @@ def seleccionar_menu_estadisticas ():
             case 6:
                 listar_club (estudiantes)
             case 7:
-                print ()
+                listar_jovenes (estudiantes)
 
         repetir = validar_str ("si quiere solicitar otra opcion", "s", "n")
 

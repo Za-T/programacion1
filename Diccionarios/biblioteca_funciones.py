@@ -134,3 +134,14 @@ def promediar_notas (datos:list):
         promedio = suma_notas // cant_notas
 
         datos [i]["promedio"] = promedio
+
+def asignar_valores (valor) -> dict:
+    
+    datos_dic = {
+        "legajo" : valor ["legajo"],
+        "nombre" : valor ["nombre"],
+        "apellido" : valor ["apellido"],
+        "programa" : valor ["programa"],
+    }
+
+    return datos_dic
