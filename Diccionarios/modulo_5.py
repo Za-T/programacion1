@@ -1,6 +1,5 @@
 from estudiantes import *
 from biblioteca_funciones import *
-from modulo_2 import promediar_notas
 
 def asignar_valores (valor) -> dict:
     

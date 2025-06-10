@@ -39,7 +39,7 @@ def seleccionar_menu_estadisticas ():
             case 5:
                 informar_mayor_prom (estudiantes)
             case 6:
-                print ()
+                listar_club (estudiantes)
             case 7:
                 print ()
 
