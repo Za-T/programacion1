@@ -8,11 +8,6 @@ def recorrer_columnas (matriz:list):
             if matriz[j][i] == matriz[j+1][i] == matriz[j+2][i]:
                 print (f"El numero {matriz[j][i]} esta repetido")
 
-
-               
-        
-
-
 matriz = [
         [5, 2, 7, 2],
         [5, 2, 7, 4],

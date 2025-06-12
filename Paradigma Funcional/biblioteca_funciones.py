@@ -20,7 +20,7 @@ def validar_str (valor: str, op1: str, op2: str) -> str:
 
     '''Validar que la cadena de caracteres ingresada sea correcta'''
 
-    cadena = str((input (f"Ingrese {valor} ({op1},{op2}): ")))
+    cadena = input (f"Ingrese {valor} ({op1},{op2}): ")
 
     while cadena != op1 and cadena != op2:
         cadena = (input (f"Error, valor ingresado no valido. Ingrese un nuevo valor ({op1},{op2}): "))
@@ -135,8 +135,19 @@ def promediar_notas (datos:list):
 
         datos [i]["promedio"] = promedio
 
-def asignar_valores (valor) -> dict:
+def promediar_num_dic (lista_n: list, key: str) -> int:
     
+    suma = 0
+    cant_total = len(lista_n)
+
+    for valor in lista_n:
+        suma += valor [f"{key}"]
+    
+    promedio = suma / cant_total
+    return promedio
+
+def asignar_valores (valor) -> dict:
+
     datos_dic = {
         "legajo" : valor ["legajo"],
         "nombre" : valor ["nombre"],
@@ -145,3 +156,4 @@ def asignar_valores (valor) -> dict:
     }
 
     return datos_dic
+
