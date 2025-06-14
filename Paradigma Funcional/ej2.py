@@ -8,26 +8,35 @@ estudiantes = [
 
 from biblioteca_funciones import *
 
+def mostrar_lista_dic (lista:list):
+
+    for i in range(len(lista)):
+
+        diccionario = lista [i]
+
+        for key, value in diccionario.items():
+            print (f"{key}: {value}")
+    
+        print ("\n")
+
 def filtrar_rango_dic (datos:list, key:str, minimo: float, maximo: float) -> list:
 
     lista = []
 
-    for elemento in datos:
-        if (elemento [f"{key}"] >= minimo) and (elemento [f"{key}"] <= maximo):
-            lista.append (elemento)
+    for dicionario in datos:
+        if (dicionario [f"{key}"] >= minimo) and (dicionario [f"{key}"] <= maximo):
+            lista.append (dicionario)
 
     return lista
 
-
-def mostrar_est_aprob (datos:list):
+def mostrar_estudiantes_aprob (datos:list):
     
     aprobados = filtrar_rango_dic (datos, "calificacion", 6, 10)
 
-    mostrar_lista (aprobados)
-
+    mostrar_lista_dic (aprobados)
 
 def procesar_estudiantes (datos:list, operacion: callable) -> callable:
 
     return operacion (datos)
 
-procesar_estudiantes (estudiantes, mostrar_est_aprob)
+procesar_estudiantes (estudiantes, mostrar_estudiantes_aprob)
