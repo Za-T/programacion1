@@ -178,4 +178,30 @@ def filtrar_rango_dic (datos:list, key:str, minimo: float, maximo: float) -> lis
 
     return lista
 
+def ordenar_desc_lista_dic (lista:list,key:str)->list:
 
+    for i in range (len(lista)-1):
+
+        for j in range (i+1, len(lista)):
+
+            if lista [i][key] >  lista [j][key]:
+
+                aux = lista [i]
+                lista [i] = lista [j]
+                lista [j] = aux                
+
+    return lista
+
+def ordenar_asc_lista_dic (lista:list,key:str)->list:
+
+    for i in range (len(lista)-1):
+
+        for j in range (i+1, len(lista)):
+
+            if lista [i][key] <  lista [j][key]:
+
+                aux = lista [i]
+                lista [i] = lista [j]
+                lista [j] = aux                
+
+    return lista
