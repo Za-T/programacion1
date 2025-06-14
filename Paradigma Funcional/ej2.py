@@ -6,8 +6,6 @@ estudiantes = [
 {"nombre": "Martina", "curso": "Física", "calificacion": 6.8} 
 ]
 
-from biblioteca_funciones import *
-
 def mostrar_lista_dic (lista:list):
 
     for i in range(len(lista)):

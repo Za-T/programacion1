@@ -160,8 +160,22 @@ def asignar_valores (valor) -> dict:
 def mostrar_lista_dic (lista:list):
 
     for i in range(len(lista)):
-        
-        for elemento in lista [i]:
-            print (elemento)
+
+        diccionario = lista [i]
+
+        for key, value in diccionario.items():
+            print (f"{key}: {value}")
     
-    print ("\n")
+        print ("\n")
+
+def filtrar_rango_dic (datos:list, key:str, minimo: float, maximo: float) -> list:
+
+    lista = []
+
+    for dicionario in datos:
+        if (dicionario [f"{key}"] >= minimo) and (dicionario [f"{key}"] <= maximo):
+            lista.append (dicionario)
+
+    return lista
+
+
