@@ -157,3 +157,11 @@ def asignar_valores (valor) -> dict:
 
     return datos_dic
 
+def mostrar_lista_dic (lista:list):
+
+    for i in range(len(lista)):
+        
+        for elemento in lista [i]:
+            print (elemento)
+    
+    print ("\n")
