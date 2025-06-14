@@ -38,7 +38,7 @@ def crear_menu (lista_opciones:list, lista_fun:list, datos: list):
 
         opcion = validar_int("opcion",primero,ultimo)
 
-        lista_fun [opcion](datos)
+        lista_fun [opcion](datos[opcion])
 
         print ("\n")
         repetir = validar_str ("si quiere solicitar otra opcion", "s", "n")
