@@ -27,6 +27,23 @@ def filtrar_rango_dic (datos:list, key:str, minimo: float, maximo: float) -> lis
 
     return lista
 
+def promediar_num_dic (lista_n: list, key: str) -> int:
+    
+    suma = 0
+    cant_total = len(lista_n)
+
+    for valor in lista_n:
+        suma += valor [f"{key}"]
+    
+    promedio = suma / cant_total
+    return promedio
+
+def mostrar_promedio (datos:list):
+
+    promedio = promediar_num_dic (datos, "calificacion")
+
+    print (f"El promedio es de {promedio}")
+
 def mostrar_estudiantes_aprob (datos:list):
     
     aprobados = filtrar_rango_dic (datos, "calificacion", 6, 10)
@@ -37,4 +54,4 @@ def procesar_estudiantes (datos:list, operacion: callable) -> callable:
 
     return operacion (datos)
 
-procesar_estudiantes (estudiantes, mostrar_estudiantes_aprob)
+procesar_estudiantes (estudiantes, mostrar_promedio)
