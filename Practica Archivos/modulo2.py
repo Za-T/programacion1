@@ -14,5 +14,4 @@ def generar_csv (ruta:str, lista_s:list):
     
     archivo.close
 
-
 generar_csv ("heroes.csv", datos_archivo["heroes"])
