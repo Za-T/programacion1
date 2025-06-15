@@ -14,5 +14,7 @@ def leer_json (direccion:str ,nombre_lista:str):
                     print (f"{esp}: {heroe[esp]}")
                 print ("\n")
 
+        return datos_archivo
+
     except FileNotFoundError:
         print ("Ese archivo no existe.")
