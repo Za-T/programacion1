@@ -4,6 +4,8 @@ def mostrar_pregunta (lista_preguntas: list) -> str:
 
     lista_op= ["a","b","c"]
 
+
+
     pregunta = random.choice(lista_preguntas)
 
     print(f"Pregunta: {pregunta["pregunta"]}")

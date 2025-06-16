@@ -17,33 +17,41 @@ def jugar_sye (tablero:list, lista_preguntas:list):
 
     while jugar == True:
 
-        respuesta_c = mostrar_pregunta (lista_preguntas)
+        preguntas = verificar_existencia (lista_preguntas)
 
-        respuesta_j = validar_str ("la respuesta correcta","a","b","c")
+        if preguntas == True:
 
-        resultado_res = verificar_igualdad (respuesta_c, respuesta_j, "Correcto!", "Incorrecto!")
+            respuesta_c = mostrar_pregunta (lista_preguntas)
+
+            respuesta_j = validar_str ("la respuesta correcta","a","b","c")
+
+            resultado_res = verificar_igualdad (respuesta_c, respuesta_j, "Correcto!", "Incorrecto!")
+                
+            posicion = calcular_posicion (tablero, posicion, resultado_res)
             
-        posicion = calcular_posicion (tablero, posicion, resultado_res)
+            if posicion != 0 and posicion != 30:
+
+                print (f"Tu posicion actual es {posicion}")
+                jugar = continuar_juego (f"¿Continuar jugando?")
+
+            elif posicion == 0:
+
+                print ("Perdiste.")
+                jugar = False
+
+            elif posicion == 30:
+                
+                print ("Ganaste.")
+                jugar = False
+
+        else:
+            print ("No hay mas preguntas.\n")
+            jugar = False
         
-        if posicion != 0 and posicion != 30:
-
-            print (f"Tu posicion actual es {posicion}")
-            jugar = continuar_juego (f"si seguir jugando")
-
-        elif posicion == 0:
-
-            print ("Perdiste.")
-            jugar = False
-
-        elif posicion == 30:
-            
-            print ("Ganaste.")
-            jugar = False
-
-    if jugar == False:
-        print (f"Fin del juego.\n"
-               f"{nombre} llego a la posicion {posicion}.")
-        escribir_score("Score.csv", nombre, posicion)
+        if jugar == False:
+            print (f"Fin del juego.\n"
+                f"{nombre} llego a la posicion {posicion}.")
+            escribir_score("Score.csv", nombre, posicion)
         
 
 jugar_sye (tablero, preguntas_c)
