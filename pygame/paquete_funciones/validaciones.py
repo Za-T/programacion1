@@ -21,12 +21,12 @@ def validar_str (valor: str, op1: str, op2: str, op3: str = None) -> str:
     '''Validar que la cadena de caracteres ingresada sea correcta'''
 
     if op3 != None:
-        cadena = input (f"Ingrese {valor} ({op1},{op2},{op3}): ")
+        cadena = input (f"{valor} ({op1},{op2},{op3}): ")
         while cadena != op1 and cadena != op2 and cadena != op3:
             cadena = (input (f"Error, valor ingresado no valido. Ingrese un nuevo valor ({op1},{op2},{op3}): "))
 
     else:
-        cadena = input (f"Ingrese {valor} ({op1},{op2}): ")
+        cadena = input (f"{valor} ({op1},{op2}): ")
         while cadena != op1 and cadena != op2:
             cadena = (input (f"Error, valor ingresado no valido. Ingrese un nuevo valor ({op1},{op2}): "))
     

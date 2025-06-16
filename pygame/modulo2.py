@@ -7,7 +7,7 @@ def calcular_posicion (tablero:list, posicion: int, resultado_res:bool) -> int:
             posicion += 1
 
             if tablero [posicion] != 0:
-                print (f"Caiste en escalera, adelantas {tablero [posicion]} casilleros.")
+                print (f"Caiste en escalera, adelantas {tablero [posicion]} casilleros.\n")
                 posicion += tablero [posicion]
 
         else:
@@ -15,7 +15,7 @@ def calcular_posicion (tablero:list, posicion: int, resultado_res:bool) -> int:
             posicion -= 1
 
             if tablero [posicion] != 0:            
-                print (f"Caiste en serpiente, atrasas {tablero [posicion]} casilleros.")
+                print (f"Caiste en serpiente, regresas {tablero [posicion]} casilleros.\n")
                 posicion -= tablero [posicion]
                 
 

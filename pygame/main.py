@@ -11,7 +11,7 @@ def jugar_sye (tablero:list, lista_preguntas:list):
     
     nombre = solicitar_str ("nombre del jugador")
 
-    jugar = continuar_juego (f"¿{nombre}, vas a jugar?")
+    jugar = continuar_juego (f"¿{nombre}, vas a jugar?").lower()
 
     posicion = 15
 
@@ -23,7 +23,7 @@ def jugar_sye (tablero:list, lista_preguntas:list):
 
             respuesta_c = mostrar_pregunta (lista_preguntas)
 
-            respuesta_j = validar_str ("su respuesta","a","b","c")
+            respuesta_j = validar_str ("\nIngrese su respuesta","a","b","c").lower()
 
             resultado_res = verificar_igualdad (respuesta_c, respuesta_j, "Correcto!\n", "Incorrecto!\n")
                 
@@ -31,17 +31,17 @@ def jugar_sye (tablero:list, lista_preguntas:list):
             
             if posicion != 0 and posicion != 30:
 
-                print (f"\nTu posicion actual es {posicion}\n")
+                print (f"Tu posicion actual es {posicion}\n")
                 jugar = continuar_juego (f"¿Continuar jugando?")
 
             elif posicion == 0:
 
-                print ("Perdiste.")
+                print ("Perdiste.\n")
                 jugar = False
 
             elif posicion == 30:
                 
-                print ("Ganaste.")
+                print ("Ganaste.\n")
                 jugar = False
 
         else:
@@ -49,9 +49,10 @@ def jugar_sye (tablero:list, lista_preguntas:list):
             jugar = False
         
         if jugar == False:
-            print (f"Fin del juego.\n"
-                f"{nombre} llego a la posicion {posicion}.")
+
+            print (f"{nombre} llego a la posicion {posicion}.")
+            print (f"Fin del juego.")
+
             escribir_score("Score.csv", nombre, posicion)
         
-
 jugar_sye (tablero, preguntas_c)
