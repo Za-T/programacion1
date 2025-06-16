@@ -3,7 +3,9 @@ from tablero import *
 from preguntas import *
 from modulo1 import *
 from modulo2 import *
+from modulo3 import *
 from modulo_extra import *
+from csv import *
 
 def jugar_sye (tablero:list, lista_preguntas:list):
     
@@ -17,17 +19,31 @@ def jugar_sye (tablero:list, lista_preguntas:list):
 
         respuesta_c = mostrar_pregunta (lista_preguntas)
 
-        respuesta_j = validar_str ("la respuesta correcta","a","b",",c")
+        respuesta_j = validar_str ("la respuesta correcta","a","b","c")
 
         resultado_res = verificar_igualdad (respuesta_c, respuesta_j, "Correcto!", "Incorrecto!")
             
         posicion = calcular_posicion (tablero, posicion, resultado_res)
         
-        if posicion == int:
+        if posicion != 0 and posicion != 30:
 
+            print (f"Tu posicion actual es {posicion}")
             jugar = continuar_juego (f"si seguir jugando")
 
+        elif posicion == 0:
+
+            print ("Perdiste.")
+            jugar = False
+
+        elif posicion == 30:
+            
+            print ("Ganaste.")
+            jugar = False
+
     if jugar == False:
-        print (f"{nombre} llego a la posicion {posicion}")
+        print (f"Fin del juego.\n"
+               f"{nombre} llego a la posicion {posicion}.")
+        escribir_score("Score.csv", nombre, posicion)
+        
 
 jugar_sye (tablero, preguntas_c)
