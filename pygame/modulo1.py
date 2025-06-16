@@ -4,11 +4,9 @@ def mostrar_pregunta (lista_preguntas: list) -> str:
 
     lista_op= ["a","b","c"]
 
-
-
     pregunta = random.choice(lista_preguntas)
 
-    print(f"Pregunta: {pregunta["pregunta"]}")
+    print(f"\nPregunta: {pregunta["pregunta"]}")
 
     for op in lista_op:
         print(f"{op}: {pregunta[f"respuesta_{op}"]}")
@@ -22,10 +20,10 @@ def mostrar_pregunta (lista_preguntas: list) -> str:
 def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
     
     if valor1 == valor2:
-        print (f"{verdad}")
+        print (f"\n{verdad}")
         retornar = True
     else:
-        print (f"{falso}")
+        print (f"\n{falso}")
         retornar = False
     
     return retornar

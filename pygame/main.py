@@ -23,15 +23,15 @@ def jugar_sye (tablero:list, lista_preguntas:list):
 
             respuesta_c = mostrar_pregunta (lista_preguntas)
 
-            respuesta_j = validar_str ("la respuesta correcta","a","b","c")
+            respuesta_j = validar_str ("su respuesta","a","b","c")
 
-            resultado_res = verificar_igualdad (respuesta_c, respuesta_j, "Correcto!", "Incorrecto!")
+            resultado_res = verificar_igualdad (respuesta_c, respuesta_j, "Correcto!\n", "Incorrecto!\n")
                 
             posicion = calcular_posicion (tablero, posicion, resultado_res)
             
             if posicion != 0 and posicion != 30:
 
-                print (f"Tu posicion actual es {posicion}")
+                print (f"\nTu posicion actual es {posicion}\n")
                 jugar = continuar_juego (f"¿Continuar jugando?")
 
             elif posicion == 0:
