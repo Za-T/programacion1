@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 preguntas = [
     {
         "pregunta": "¿Cuál es el país más grande del mundo por superficie?",
@@ -105,3 +107,5 @@ preguntas = [
         "respuesta_correcta": "a"
     }
 ]
+
+preguntas_c = deepcopy(preguntas)
