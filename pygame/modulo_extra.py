@@ -11,12 +11,13 @@ def continuar_juego (pregunta:str) -> bool:
 
     return respuesta
 
-def verificar_existencia (lista: list) -> bool:
-
-    try:
-        lista [0]
+def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
+    
+    if valor1 == valor2:
+        print (f"\n{verdad}")
         retornar = True
-    except IndexError:
+    else:
+        print (f"\n{falso}")
         retornar = False
     
     return retornar

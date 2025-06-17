@@ -17,14 +17,14 @@ def mostrar_pregunta (lista_preguntas: list) -> str:
 
     return respuesta_c
 
-def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
-    
-    if valor1 == valor2:
-        print (f"\n{verdad}")
+def verificar_existencia (lista: list) -> bool:
+
+    try:
+        lista [0]
         retornar = True
-    else:
-        print (f"\n{falso}")
+    except IndexError:
         retornar = False
     
     return retornar
+
 
