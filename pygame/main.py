@@ -1,13 +1,18 @@
-from paquete_funciones.validaciones import *
 from tablero import *
 from preguntas import *
 from fun_preguntas import *
 from fun_posicion import *
 from fun_final import *
-from fun_score import *
-from fun_extra import *
+from fun_aux import *
 
 def jugar_sye (tablero:list, lista_preguntas:list):
+
+    ''' 
+        La fucion jugar_sye se encarga de ejecutar todas las funciones necesesarias para correr el juego.
+        tablero: recibe la lista que contiene el orden del tablero.
+        lista_preguntas: recibe la lista que contiene las preguntas a responder en el juego.
+        
+    '''
     
     nombre = solicitar_str ("nombre del jugador")
 
