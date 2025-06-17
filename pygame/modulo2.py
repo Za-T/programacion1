@@ -18,7 +18,6 @@ def calcular_posicion (tablero:list, posicion: int, resultado_res:bool) -> int:
                 print (f"Caiste en serpiente, regresas {tablero [posicion]} casilleros.\n")
                 posicion -= tablero [posicion]
                 
-
     else:
         posicion = posicion 
 
