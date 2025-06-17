@@ -1,3 +1,5 @@
+from csv import *
+
 def escribir_score (ruta:str, nombre:str, puntos: int):
 
     anotar = [f"Nombre: {nombre}; ",

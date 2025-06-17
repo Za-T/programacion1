@@ -2,10 +2,10 @@ from paquete_funciones.validaciones import *
 from tablero import *
 from preguntas import *
 from fun_preguntas import *
-from posicion import *
-from modulo3 import *
-from modulo_extra import *
-from csv import *
+from fun_posicion import *
+from fun_final import *
+from fun_score import *
+from fun_extra import *
 
 def jugar_sye (tablero:list, lista_preguntas:list):
     
@@ -45,8 +45,6 @@ def jugar_sye (tablero:list, lista_preguntas:list):
             print ("No hay mas preguntas.")
             jugar = False
         
-    print (f"\n{nombre} llego a la posicion {posicion}.")
-    print (f"Fin del juego.")
-    escribir_score("Score.csv", nombre, posicion)
+    finalizar_juego (nombre, posicion)
         
 jugar_sye (tablero, preguntas_c)
