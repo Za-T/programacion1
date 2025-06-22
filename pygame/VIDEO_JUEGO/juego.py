@@ -1,6 +1,12 @@
 import pygame
 from imagenes import *
 from constantes_main import *
+from preguntas import *
+
+
+resultado = 
+
+
 
 #INICIALIZAR
 pygame.init()
@@ -14,7 +20,11 @@ tablero_png = pygame.transform.scale(tablero_png,(1000,1000))
 menu_png = pygame.image.load ("imagenes/menu.png")
 menu_png = pygame.transform.scale(menu_png,(1000,1000))
 
-#FUENTE
+#Definir texto
+fuente = pygame.font.render("Arial",30)
+txt_resultado = fuente.render(str(resultado), True, BLACK)
+
+
 
 
 #RECTANGULOS
