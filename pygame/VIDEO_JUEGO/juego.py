@@ -1,11 +1,12 @@
 import pygame
-from imagenes import *
+
 from constantes_main import *
 from preguntas import *
+from score import *
 
-
-resultado = 
-
+lista_res = leer_csv ("score.csv")
+resultado_n = lista_res [0] ["Nombre"]
+resultado_p = lista_res [0] ["Puntos"]
 
 
 #INICIALIZAR
@@ -22,7 +23,8 @@ menu_png = pygame.transform.scale(menu_png,(1000,1000))
 
 #Definir texto
 fuente = pygame.font.render("Arial",30)
-txt_resultado = fuente.render(str(resultado), True, BLACK)
+txt_resultado_n = fuente.render(str(resultado_n), True, BLACK)
+txt_resultado_p = fuente.render(str(resultado_p), True, BLACK)
 
 
 
