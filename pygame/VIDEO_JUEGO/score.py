@@ -1,4 +1,4 @@
-import csv
+from csv import *
 
 def leer_csv (nombre:str)-> list:
     
@@ -16,4 +16,4 @@ def leer_csv (nombre:str)-> list:
         print ("Ese archivo no existe.")
 
 
-print (leer_csv("Score.csv"))
+print (leer_csv("score.csv"))
