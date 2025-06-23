@@ -37,30 +37,34 @@ primer = True
 
 while running == True:
 
+    lista_eventos = pygame.event.get ()
+    
     #menu inicio
     if primer == True:
         screen.blit(menu_png, (0,0))
-        primer = False
-
-    lista_eventos = pygame.event.get ()
 
     for evento in lista_eventos:
 
         if evento.type == pygame.QUIT:
             running = False
 
-        if evento.type == pygame.MOUSEBUTTONDOWN:
-            lista_posicion = list (evento.pos)
+        if primer == True:
+            screen.blit(menu_png, (0,0))
 
-            #Decidir que hacer en el menu
-            if rect_mn_jugar.collidepoint(lista_posicion):
-                screen.blit(tablero_png, (0,0))
+            if evento.type == pygame.MOUSEBUTTONDOWN:
+                lista_posicion = list (evento.pos)
 
-            if rect_mn_puntos.collidepoint(lista_posicion):
-                mostrar_score(screen, fuente, WHITE)
+                #Decidir que hacer en el menu
+                if rect_mn_jugar.collidepoint(lista_posicion):
+                    pantalla_nombre (screen)
+                    primer = False
 
-            if rect_mn_salir.collidepoint(lista_posicion):
-                running = False
+                if rect_mn_puntos.collidepoint(lista_posicion):
+                    mostrar_score(screen, fuente, WHITE)
+                    primer = False
+
+                if rect_mn_salir.collidepoint(lista_posicion):
+                    running = False
 
     pygame.display.flip() #actualiza la ventana
 

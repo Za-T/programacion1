@@ -1,6 +1,5 @@
 from csv import *
 from copy import deepcopy
-import pygame
 from imagenes import *
 from modulo_aux import *
 
