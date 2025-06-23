@@ -1,6 +1,11 @@
 import pygame
+from modulo_aux import *
 
-def mostrar_tablero ():
+def preguntar_nombre (screen)->callable:
+    fondo = atribuir_fondo ("imagenes\ing_nom.png")
+    screen.blit(fondo, (0,0))
+    
 
-    tablero_png = pygame.image.load ("imagenes/tablero.png")
-    tablero_png = pygame.transform.scale(tablero_png,(1000,1000))
+def mostrar_tablero (screen):
+    tablero_png = atribuir_fondo ("imagenes\tablero.png")
+    screen.blit(tablero_png, (0,0))
