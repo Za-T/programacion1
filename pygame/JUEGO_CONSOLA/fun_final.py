@@ -2,9 +2,10 @@ from csv import *
 
 def escribir_score (ruta:str, nombre:str, puntos: int):
 
-    anotar = [f"Nombre: {nombre}; ",
-              f"Puntos: {puntos}; ",
-              "\n"]
+    anotar = [
+        f"Nombre: {nombre}; ",
+        f"Puntos: {puntos}; ",
+    ]
 
     with open(ruta, "a") as archivo:
         archivo.writelines(anotar)
