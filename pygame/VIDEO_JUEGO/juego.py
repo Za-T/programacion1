@@ -1,12 +1,15 @@
 import pygame
 
 from constantes_main import *
+from menu import *
+from run_preguntas import *
+
 from preguntas import *
 from score import *
 
 lista_res = leer_csv ("score.csv")
-resultado_n = lista_res [0] ["Nombre"]
-resultado_p = lista_res [0] ["Puntos"]
+resultado_n = lista_res [0]
+#resultado_p = lista_res [0] #corregir
 
 
 #INICIALIZAR
@@ -18,21 +21,17 @@ pygame.display.set_caption("Serpientes y escaleras") #titulo
 tablero_png = pygame.image.load ("imagenes/tablero.png")
 tablero_png = pygame.transform.scale(tablero_png,(1000,1000))
 
-menu_png = pygame.image.load ("imagenes/menu.png")
+menu_png = pygame.image.load ("imagenes/menu_sye.png")
 menu_png = pygame.transform.scale(menu_png,(1000,1000))
 
-#Definir texto
-fuente = pygame.font.render("Arial",30)
-txt_resultado_n = fuente.render(str(resultado_n), True, BLACK)
-txt_resultado_p = fuente.render(str(resultado_p), True, BLACK)
-
-
+#Fuente
+fuente = pygame.font.SysFont("Arial",30)
 
 
 #RECTANGULOS
-rect_mn_jugar = pygame.Rect(350,500,300,78.2)
-rect_mn_score = pygame.Rect(350,610.2,300,78.2)
-rect_mn_salir = pygame.Rect(350,720.3,300,78.2)
+rect_mn_puntos = pygame.Rect(377.2, 275.2, 245.7, 122.8)
+rect_mn_jugar = pygame.Rect(359.5, 429.8, 281, 140.5)
+rect_mn_salir = pygame.Rect(369, 602.2, 245.7, 122.8)
 
 
 running = True
@@ -58,8 +57,10 @@ while running == True:
             #Decidir que hacer en el menu
             if rect_mn_jugar.collidepoint(lista_posicion):
                 screen.blit(tablero_png, (0,0))
-            if rect_mn_score.collidepoint(lista_posicion):
-                print("score")
+
+            if rect_mn_puntos.collidepoint(lista_posicion):
+                mostrar_score(screen, fuente, WHITE)
+
             if rect_mn_salir.collidepoint(lista_posicion):
                 running = False
 
