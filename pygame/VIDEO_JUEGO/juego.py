@@ -11,7 +11,6 @@ lista_res = leer_csv ("score.csv")
 resultado_n = lista_res [0]
 #resultado_p = lista_res [0] #corregir
 
-
 #INICIALIZAR
 pygame.init()
 screen = pygame.display.set_mode ([ANCHO_VENTANA, ALTO_VENTANA]) #tama;o pantalla
@@ -26,7 +25,6 @@ menu_png = pygame.transform.scale(menu_png,(1000,1000))
 
 #Fuente
 fuente = pygame.font.SysFont("Arial",30)
-
 
 #RECTANGULOS
 rect_mn_puntos = pygame.Rect(377.2, 275.2, 245.7, 122.8)

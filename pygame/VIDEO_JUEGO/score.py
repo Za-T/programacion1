@@ -1,4 +1,5 @@
 from csv import *
+from copy import deepcopy
 import pygame
 from imagenes import *
 from modulo_aux import *
@@ -22,10 +23,13 @@ def mostrar_score (screen, fuente, color):
 
     lista_res = leer_csv ("score.csv")
 
-    posc_imp = [110,181.3]  
-
+    x_izq = 120
+    x_der = 574.6
+    y_izq = 181.3
+    y_der = deepcopy(y_izq)
+      
     for i in range(10): #asume que hay 10, arreglar
-
+        
         resultado_n = lista_res [i]
         #resultado_p = lista_res [i] #corregir
 
@@ -33,7 +37,15 @@ def mostrar_score (screen, fuente, color):
                     
         #txt_resultado_p = fuente.render(str(resultado_p), True, BLACK)
 
-        posc_imp [1] += 129.3
-                   
-
+        if i % 2 == 0:
+            y_izq += 129  
+            posc_imp = [x_izq,y_izq] 
+               
+        else:
+            y_der += 129
+            posc_imp = [x_der,y_der]
+            
+        
+        
+        
         screen.blit(txt_resultado_n,posc_imp)
