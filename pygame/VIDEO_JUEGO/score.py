@@ -27,6 +27,7 @@ def mostrar_score (screen, fuente, color):
     x_der = 574.6
     y_izq = 181.3
     y_der = deepcopy(y_izq)
+    diferencia = 129
       
     for i in range(10): #asume que hay 10, arreglar
         
@@ -38,14 +39,11 @@ def mostrar_score (screen, fuente, color):
         #txt_resultado_p = fuente.render(str(resultado_p), True, BLACK)
 
         if i % 2 == 0:
-            y_izq += 129  
+            y_izq += diferencia  
             posc_imp = [x_izq,y_izq] 
                
         else:
-            y_der += 129
+            y_der += diferencia
             posc_imp = [x_der,y_der]
             
-        
-        
-        
         screen.blit(txt_resultado_n,posc_imp)
