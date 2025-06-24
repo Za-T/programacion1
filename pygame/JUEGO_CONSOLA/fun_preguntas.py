@@ -21,16 +21,6 @@ def mostrar_pregunta (lista_preguntas: list) -> str:
 
     return respuesta_c
 
-def verificar_existencia (lista: list) -> bool:
 
-    '''La funcion verifica que la lista no este vacia.'''
-
-    try:
-        lista [0]
-        retornar = True
-    except IndexError:
-        retornar = False
-    
-    return retornar
 
 

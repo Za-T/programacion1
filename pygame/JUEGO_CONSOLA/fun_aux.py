@@ -46,3 +46,16 @@ def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
         retornar = False
     
     return retornar
+
+def verificar_existencia (lista: list) -> bool:
+
+    '''La funcion verifica que la lista no este vacia.
+       Retorna un valor booleano, True si existe, False si no.'''
+
+    try:
+        lista [0]
+        retornar = True
+    except IndexError:
+        retornar = False
+    
+    return retornar
