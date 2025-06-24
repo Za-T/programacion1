@@ -66,9 +66,13 @@ def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
 def verificar_existencia (lista: list) -> bool:
 
     '''La funcion verifica que la lista no este vacia.
-       Retorno:
-            True si existe
-            False si no.'''
+
+    Parametro:
+        lista: la lista que se busca comprobar.
+
+    Retorno:
+        True si existe
+        False si no.'''
 
     try:
         lista [0]
