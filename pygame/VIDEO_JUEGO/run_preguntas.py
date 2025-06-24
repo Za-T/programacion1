@@ -16,7 +16,7 @@ def pygm_input (screen:vars, rectangulo:vars, color_rect:tuple, color: tuple, fu
 
         lista_eventos = pygame.event.get ()
 
-        for evento in lista_eventos:
+        for evento in lista_eventos:#como hacer sin doble bucle?
 
             if evento.type == pygame.QUIT:
                 running = False

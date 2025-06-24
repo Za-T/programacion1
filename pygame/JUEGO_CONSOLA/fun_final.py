@@ -2,13 +2,8 @@ from csv import *
 
 def escribir_score (ruta:str, nombre:str, puntos: int):
 
-    anotar = [
-        f"Nombre: {nombre}; ",
-        f"Puntos: {puntos}; ",
-    ]
-
     with open(ruta, "a") as archivo:
-        archivo.writelines(anotar)
+        archivo.write(f"{puntos},{nombre}\n")
 
 def finalizar_juego (nombre:str, posicion:int,):
 

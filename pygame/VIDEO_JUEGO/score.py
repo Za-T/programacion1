@@ -3,24 +3,24 @@ from copy import deepcopy
 from imagenes import *
 from modulo_aux import *
 
-def leer_csv (nombre:str)-> list:
+def leer_archivo (nombre:str)-> list:
     
     try:
         with open(nombre, 'r') as archivo:
             lista_lineas = archivo.readlines()
-
-        return lista_lineas
     
     except FileNotFoundError:
         print ("Ese archivo no existe.")
+        lista_lineas =[]
+
+    return lista_lineas
 
 def mostrar_score (screen, fuente, color):
 
     score_png = atribuir_fondo ("imagenes/Score.png")
-
     screen.blit(score_png, (0,0))
 
-    lista_res = leer_csv ("score.csv")
+    lista_res = leer_archivo ("score.csv")
 
     x_izq = 120
     x_der = 574.6

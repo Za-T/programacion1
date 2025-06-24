@@ -1,3 +1,5 @@
+import pygame
+
 ALTO_VENTANA = int(1000)
 ANCHO_VENTANA = int(1000)
 
@@ -6,3 +8,4 @@ ANCHO_VENTANA = int(1000)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 HOTPINK = (255, 105, 180)
+
