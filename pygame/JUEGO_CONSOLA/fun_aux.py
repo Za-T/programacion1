@@ -28,7 +28,7 @@ def continuar_juego (pregunta:str) -> bool:
             pregunta =  texto de la pregunta a mostrar al usuario.
 
         Retorno: un booleano, 
-            True si quiere continuar 
+            True si quiere continuar. 
             False si no quiere continuar.'''
 
     respuesta = validar_str (pregunta,"s","n")
@@ -43,9 +43,16 @@ def continuar_juego (pregunta:str) -> bool:
 def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
 
     '''Verifica si los parametros, valor1 y valor2, son iguales.
-       Retorno:
-            True si es igual
-            False si no es igual.'''
+
+    Parametros:
+        valor1: primer valor a comparar.
+        valor2: seegundo valor a comparar.
+        verdad: mensaje a mostrar si es verdadero.
+        falso: mensaje a mostar si es falso.
+
+    Retorno:
+        True si es igual.
+        False si no es igual.'''
     
     if valor1 == valor2:
         print (f"\n{verdad}")
