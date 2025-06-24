@@ -1,20 +1,34 @@
 
 def solicitar_str (nombre_valor: str) -> str:
-    '''Solicita al usuario el ingreso de una cadena y la retorna'''
+
+    '''Solicita al usuario el ingreso de una cadena y la retorna.
+        Parametro:
+            nombre_valor: el nombre del valor a ingresar'''
+    
     cadena = str (input (f"Ingresar {nombre_valor}: "))
     return cadena
 
-def validar_str (valor: str, op1: str, op2: str, op3: str = None) -> str:
+def validar_str (texto: str, op1: str, op2: str, op3: str = None) -> str:
 
-    '''Validar que la cadena de caracteres ingresada sea correcta'''
+    '''Validar que la cadena de caracteres ingresada este disponible entre 2 o 3 opciones.
+
+    Parametros:
+        texto: Texto que se muestra para indicarle al usuario que debe ingresar un valor. 
+        op1: Opcion 1 a elegir
+        op2: Opcion 2 a elegir,
+        op3: Opcion 3 a elegir. Se asume que esta opcion esta vacia, 
+        si en los parametros reales se ingresa un valor, entonces ahi se muestra esta opcion.
+
+    Retorno:
+        Retorna la respuesta elegida dentro de las opciones validas.'''
 
     if op3 != None:
-        cadena = input (f"{valor} ({op1},{op2},{op3}): ")
+        cadena = input (f"{texto} ({op1},{op2},{op3}): ")
         while cadena != op1 and cadena != op2 and cadena != op3:
             cadena = (input (f"Error, valor ingresado no valido. Ingrese un nuevo valor ({op1},{op2},{op3}): "))
 
     else:
-        cadena = input (f"{valor} ({op1},{op2}): ")
+        cadena = input (f"{texto} ({op1},{op2}): ")
         while cadena != op1 and cadena != op2:
             cadena = (input (f"Error, valor ingresado no valido. Ingrese un nuevo valor ({op1},{op2}): "))
     
@@ -24,12 +38,12 @@ def continuar_juego (pregunta:str) -> bool:
 
     '''Verifica si el usuario quiere continuar el juego.
 
-        Parametros
-            pregunta =  texto de la pregunta a mostrar al usuario.
+    Parametros
+        pregunta =  texto de la pregunta a mostrar al usuario.
 
-        Retorno: un booleano, 
-            True si quiere continuar. 
-            False si no quiere continuar.'''
+    Retorno: un booleano, 
+        True si quiere continuar. 
+        False si no quiere continuar.'''
 
     respuesta = validar_str (pregunta,"s","n")
 
@@ -46,7 +60,7 @@ def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
 
     Parametros:
         valor1: primer valor a comparar.
-        valor2: seegundo valor a comparar.
+        valor2: segundo valor a comparar.
         verdad: mensaje a mostrar si es verdadero.
         falso: mensaje a mostar si es falso.
 
