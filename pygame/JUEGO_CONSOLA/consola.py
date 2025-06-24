@@ -9,8 +9,10 @@ def jugar_sye (tablero:list, lista_preguntas:list):
 
     ''' 
         La fucion jugar_sye se encarga de ejecutar todas las funciones necesesarias para correr el juego.
-        tablero: recibe la lista que contiene el orden del tablero.
-        lista_preguntas: recibe la lista que contiene las preguntas a responder en el juego.
+
+        Parametros:
+            tablero: lista que representa el orden del tablero.
+            lista_preguntas: lista de diccionarios que contiene las preguntas y respuestas del juego.
         
     '''
     
@@ -34,20 +36,22 @@ def jugar_sye (tablero:list, lista_preguntas:list):
                 
             posicion = actualizar_posicion_mov (tablero, posicion, resultado_res)
             
-            if posicion != 0 and posicion != 30:
-                print (f"Tu posicion actual es {posicion}\n")
-                jugar = continuar_juego (f"¿Continuar jugando?")
+            match posicion:
 
-            elif posicion == 0:
-                print ("Perdiste.")
-                jugar = False
-
-            elif posicion == 30:
-                print ("Ganaste.")
-                jugar = False
+                case 0:
+                    print ("Perdiste.")
+                    jugar = False
                 
+                case 30:
+                    print ("Ganaste.")
+                    jugar = False
+                
+                case _:
+                    print (f"Tu posicion actual es {posicion}\n")
+                    jugar = continuar_juego (f"¿Continuar jugando?")
+               
         else:
-            print ("No hay mas preguntas.")
+            print ("\nNo hay mas preguntas.")
             jugar = False
         
     finalizar_juego (nombre, posicion)

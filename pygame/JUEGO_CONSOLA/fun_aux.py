@@ -22,7 +22,14 @@ def validar_str (valor: str, op1: str, op2: str, op3: str = None) -> str:
 
 def continuar_juego (pregunta:str) -> bool:
 
-    '''Verifica si el usuario quiere continuar el juego, retorna un booleano, True si quiere continuar, False si no quiere continuar.'''
+    '''Verifica si el usuario quiere continuar el juego.
+
+        Parametros
+            pregunta =  texto de la pregunta a mostrar al usuario.
+
+        Retorno: un booleano, 
+            True si quiere continuar 
+            False si no quiere continuar.'''
 
     respuesta = validar_str (pregunta,"s","n")
 
@@ -35,8 +42,10 @@ def continuar_juego (pregunta:str) -> bool:
 
 def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
 
-    '''Veerifica si los parametros, valor1 y valor2, son iguales.
-       Retorna un valor booleano, True si es igual, False si no es igual.'''
+    '''Verifica si los parametros, valor1 y valor2, son iguales.
+       Retorno:
+            True si es igual
+            False si no es igual.'''
     
     if valor1 == valor2:
         print (f"\n{verdad}")
@@ -50,7 +59,9 @@ def verificar_igualdad (valor1, valor2, verdad: str, falso: str) -> bool:
 def verificar_existencia (lista: list) -> bool:
 
     '''La funcion verifica que la lista no este vacia.
-       Retorna un valor booleano, True si existe, False si no.'''
+       Retorno:
+            True si existe
+            False si no.'''
 
     try:
         lista [0]
