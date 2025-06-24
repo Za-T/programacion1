@@ -56,7 +56,7 @@ while running == True:
 
                 #Decidir que hacer en el menu
                 if rect_mn_jugar.collidepoint(lista_posicion):
-                    pantalla_nombre (screen)
+                    nombre = pantalla_nombre (screen, WHITE, BLACK, fuente)
                     primer = False
 
                 if rect_mn_puntos.collidepoint(lista_posicion):
