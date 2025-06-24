@@ -1,5 +1,9 @@
-def calcular_posicion (tablero:list, posicion: int, resultado_res:bool) -> int:
+def actualizar_posicion_mov (tablero:list, posicion: int, resultado_res:bool) -> int:
     
+    '''La funcion se encargar de verificar cual es la nueva posicion a la que se tiene que mover el jugador.
+        Ademas le informa si cayo en escalera o serpiente, y cuantos casilleros debe saltearse.
+        Retorna un entero con la nueva posicion.'''
+
     if posicion != 0 and posicion != 30:
        
         if resultado_res == True:

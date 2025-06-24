@@ -32,7 +32,7 @@ def jugar_sye (tablero:list, lista_preguntas:list):
 
             resultado_res = verificar_igualdad (respuesta_c, respuesta_j, "Correcto!\n", "Incorrecto!\n")
                 
-            posicion = calcular_posicion (tablero, posicion, resultado_res)
+            posicion = actualizar_posicion_mov (tablero, posicion, resultado_res)
             
             if posicion != 0 and posicion != 30:
                 print (f"Tu posicion actual es {posicion}\n")

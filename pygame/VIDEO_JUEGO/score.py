@@ -28,7 +28,7 @@ def mostrar_score (screen, fuente, color):
     y_der = deepcopy(y_izq)
     diferencia = 129
       
-    for i in range(10): #asume que hay 10, arreglar
+    for i in range(1,10): #asume que hay 10, arreglar
         
         resultado_n = lista_res [i]
         #resultado_p = lista_res [i] #corregir
