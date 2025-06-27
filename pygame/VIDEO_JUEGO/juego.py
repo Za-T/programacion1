@@ -3,6 +3,7 @@ import pygame
 from constantes_main import *
 from menu import *
 from run_preguntas import *
+from pantalla_nombre import *
 
 from preguntas import *
 from score import *
@@ -36,11 +37,17 @@ rect_mn_puntos = pygame.Rect(377.2, 275.2, 245.7, 122.8)
 rect_mn_jugar = pygame.Rect(359.5, 429.8, 281, 140.5)
 rect_mn_salir = pygame.Rect(369, 602.2, 245.7, 122.8)
 
+rect_a = pygame.Rect(35, 122.5, 300, 50)
+rect_b = pygame.Rect(350, 122.5, 300, 50)
+rect_c = pygame.Rect(655, 122.5, 300, 50)
+
 #Fuente
 FUENTE = pygame.font.SysFont("Arial", 30) #pq si pongo fuente en otro archivo no lo toma?
 
 running = True
 primer = True
+nombre = None
+respuesta_correcta = None
 
 while running == True:
 
@@ -63,7 +70,7 @@ while running == True:
 
                 #Decidir que hacer en el menu
                 if rect_mn_jugar.collidepoint(lista_posicion):
-                    nombre = pantalla_nombre (screen, WHITE, BLACK, FUENTE)
+                    nombre = correr_pantalla_nombre (screen, lista_eventos, WHITE, BLACK, FUENTE)
                     primer = False
 
                 if rect_mn_puntos.collidepoint(lista_posicion):
@@ -72,6 +79,39 @@ while running == True:
 
                 if rect_mn_salir.collidepoint(lista_posicion):
                     running = False
+        
+        if nombre != None:
+
+            existencia = verificar_existencia (preguntas_c)
+
+            if existencia == True:
+
+                respuesta_correcta = mostrar_preguntas (screen, FUENTE, BLACK, preguntas_c)
+
+                match respuesta_correcta:
+                    case "a":
+                        rect_correcto = rect_a
+                        rect_incorrecto1 = rect_b
+                        rect_incorrecto2 = rect_c
+                    case "b":
+                        rect_correcto = rect_b
+                        rect_incorrecto1 = rect_a
+                        rect_incorrecto2 = rect_c
+                    case "c":
+                        rect_correcto = rect_c
+                        rect_incorrecto1 = rect_a
+                        rect_incorrecto2 = rect_b
+
+                if respuesta_correcta != None:
+
+                    resultado_ronda = verificar_respuesta (evento, lista_posicion, rect_correcto, rect_incorrecto1, rect_incorrecto2)
+                    
+                    if resultado_ronda != None:
+                        print (resultado_ronda)
+                        
+
+            else: 
+                print ("terminar juego")
 
     pygame.display.flip() #actualiza la ventana
 
