@@ -19,100 +19,89 @@ from score import *
 
 '''
 
-
 #INICIALIZAR
 pygame.init()
 screen = pygame.display.set_mode ([ANCHO_VENTANA, ALTO_VENTANA]) #tama;o pantalla
 pygame.display.set_caption("Serpientes y escaleras") #titulo
-
-#FONDOS
-tablero_png = pygame.image.load ("imagenes/tablero.png")
-tablero_png = pygame.transform.scale(tablero_png,(1000,1000))
-
-menu_png = pygame.image.load ("imagenes/menu_sye.png")
-menu_png = pygame.transform.scale(menu_png,(1000,1000))
-
-#RECTANGULOS
-rect_mn_puntos = pygame.Rect(377.2, 275.2, 245.7, 122.8)
-rect_mn_jugar = pygame.Rect(359.5, 429.8, 281, 140.5)
-rect_mn_salir = pygame.Rect(369, 602.2, 245.7, 122.8)
-
-rect_a = pygame.Rect(35, 122.5, 300, 50)
-rect_b = pygame.Rect(350, 122.5, 300, 50)
-rect_c = pygame.Rect(655, 122.5, 300, 50)
+clock = pygame.time.Clock()
 
 #Fuente
-FUENTE = pygame.font.SysFont("Arial", 30) #pq si pongo fuente en otro archivo no lo toma?
+FUENTE = pygame.font.SysFont("Arial", 30)
 
+#Variables de estado
+estado_actual = ESTADO_MENU
 running = True
-primer = True
 nombre = None
 respuesta_correcta = None
+posicion_jugador = 15
 
 while running == True:
 
     lista_eventos = pygame.event.get ()
     
-    #menu inicio
-    if primer == True:
-        screen.blit(menu_png, (0,0))
-
     for evento in lista_eventos:
 
         if evento.type == pygame.QUIT:
             running = False
 
-        if primer == True:
-            screen.blit(menu_png, (0,0))
-
-            if evento.type == pygame.MOUSEBUTTONDOWN:
+        elif evento.type == pygame.MOUSEBUTTONDOWN:
                 lista_posicion = list (evento.pos)
 
-                #Decidir que hacer en el menu
-                if rect_mn_jugar.collidepoint(lista_posicion):
-                    nombre = correr_pantalla_nombre (screen, lista_eventos, WHITE, BLACK, FUENTE)
-                    primer = False
+                match estado_actual:
 
-                if rect_mn_puntos.collidepoint(lista_posicion):
-                    mostrar_score(screen, FUENTE, WHITE)
-                    primer = False
+                    case False:
+                        running = False
 
-                if rect_mn_salir.collidepoint(lista_posicion):
-                    running = False
-        
-        if nombre != None:
+                    case "menu": 
+                        estado_actual = generar_menu(evento, lista_posicion, screen, estado_actual)
 
-            existencia = verificar_existencia (preguntas_c)
+                    case "nombre":
 
-            if existencia == True:
+                        nombre = correr_pantalla_nombre(screen, lista_eventos, WHITE, BLACK, FUENTE)
+            
+                        if nombre != None: 
+                            nombre = nombre
+                            estado_actual = ESTADO_JUGANDO
 
-                respuesta_correcta = mostrar_preguntas (screen, FUENTE, BLACK, preguntas_c)
+                    case "jugando":
+                        existencia = verificar_existencia (preguntas_c)
 
-                match respuesta_correcta:
-                    case "a":
-                        rect_correcto = rect_a
-                        rect_incorrecto1 = rect_b
-                        rect_incorrecto2 = rect_c
-                    case "b":
-                        rect_correcto = rect_b
-                        rect_incorrecto1 = rect_a
-                        rect_incorrecto2 = rect_c
-                    case "c":
-                        rect_correcto = rect_c
-                        rect_incorrecto1 = rect_a
-                        rect_incorrecto2 = rect_b
+                        if existencia:
+                            respuesta_correcta = mostrar_preguntas(screen, FUENTE, BLACK, preguntas_c)
+                            esperando_respuesta = True
 
-                if respuesta_correcta != None:
+                            match respuesta_correcta:
+                                case "a":
+                                    rect_correcto = rect_a
+                                    rect_incorrecto1 = rect_b
+                                    rect_incorrecto2 = rect_c
+                                case "b":
+                                    rect_correcto = rect_b
+                                    rect_incorrecto1 = rect_a
+                                    rect_incorrecto2 = rect_c
+                                case "c":
+                                    rect_correcto = rect_c
+                                    rect_incorrecto1 = rect_a
+                                    rect_incorrecto2 = rect_b
 
-                    resultado_ronda = verificar_respuesta (evento, lista_posicion, rect_correcto, rect_incorrecto1, rect_incorrecto2)
+                            if respuesta_correcta != None:
+                                resultado_ronda = verificar_respuesta (evento, lista_posicion, rect_correcto, rect_incorrecto1, rect_incorrecto2)
                     
-                    if resultado_ronda != None:
-                        print (resultado_ronda)
-                        
+                        if resultado_ronda != None:
+                            print (resultado_ronda)
 
-            else: 
-                print ("terminar juego")
+                        else:
+                            estado_actual = ESTADO_GAME_OVER
 
-    pygame.display.flip() #actualiza la ventana
+                    case "puntos":
+                        mostrar_score (screen, FUENTE, WHITE)
+
+                    case "game_over":
+                        print ("f")
+                        running = False
+    
+    pygame.display.flip()
+    clock.tick(60)
+
 
 pygame.quit()

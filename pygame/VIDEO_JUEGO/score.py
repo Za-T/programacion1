@@ -17,8 +17,7 @@ def leer_archivo (nombre:str)-> list:
 
 def mostrar_score (screen, fuente, color):
 
-    score_png = atribuir_fondo ("imagenes/Score.png")
-    screen.blit(score_png, (0,0))
+    atribuir_fondo ("imagenes/Score.png",screen)
 
     lista_res = leer_archivo ("score.csv")
 
@@ -46,3 +45,5 @@ def mostrar_score (screen, fuente, color):
             posc_imp = [x_der,y_der]
             
         screen.blit(txt_resultado_n,posc_imp)
+    
+    pygame.display.flip()

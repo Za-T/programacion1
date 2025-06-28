@@ -3,17 +3,13 @@ import pygame
 def pygm_input (screen:vars, lista_eventos, rectangulo:vars, color_rect:tuple, color: tuple, fuente:vars)-> str:
 
     txt = ""
-
     activo = False
     
-    pygame.draw.rect(screen, color_rect, rectangulo)
-
     for evento in lista_eventos:
             if evento.type == pygame.MOUSEBUTTONDOWN:   
                 activo = rectangulo.collidepoint(evento.pos)
 
             if evento.type == pygame.KEYDOWN:
-
                 if activo != False:            
                     if evento.key == pygame.K_RETURN:
                         return txt
@@ -22,10 +18,10 @@ def pygm_input (screen:vars, lista_eventos, rectangulo:vars, color_rect:tuple, c
                     else:
                         txt += evento.unicode
 
+    pygame.draw.rect(screen, color_rect, rectangulo)
     font_input_surface = fuente.render(txt, True, color) 
     screen.blit(font_input_surface, ( rectangulo.x + 15, rectangulo.y + 15 ))
-        #mostrar los cambios en la pantalla
-    pygame.display.flip()
+      
 
 def verificar_existencia (lista: list) -> bool:
 
@@ -46,10 +42,9 @@ def verificar_existencia (lista: list) -> bool:
     
     return retornar
 
-def atribuir_fondo(ruta: str, size = (1000,1000)):
+def atribuir_fondo(ruta: str, screen, size = (1000,1000)):
 
     pantalla = pygame.image.load (ruta)
     pantalla = pygame.transform.scale(pantalla, size)
-
-    return pantalla
+    screen.blit(pantalla, (0,0))
     

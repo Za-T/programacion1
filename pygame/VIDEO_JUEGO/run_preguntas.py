@@ -5,8 +5,7 @@ import random
 
 def mostrar_preguntas (screen, fuente, color, lista_preguntas) -> str:
 
-    tablero_png = atribuir_fondo ("imagenes/tablero.png")
-    screen.blit(tablero_png, (0,0))
+    atribuir_fondo ("imagenes/tablero.png",screen)
 
     x_pregunta = 35.2
     y_preguntas = 21.3
