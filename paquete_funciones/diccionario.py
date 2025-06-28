@@ -66,3 +66,7 @@ def mostrar_keys (datos:list,key_list:list):
             print (f"{key_list[j]}: {datos[i][key_list[j]]}")
         print ("\n")
 
+def auxiliar_listas_dic (lista:list, clave:str, i:int,j:int):
+    aux = lista [i] [clave]
+    lista [i] [clave] = lista [j] [clave]
+    lista [j] [clave] = aux

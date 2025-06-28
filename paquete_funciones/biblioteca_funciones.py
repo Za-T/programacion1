@@ -1,8 +1,4 @@
 
-def auxiliar_listas_dic (lista:list, clave:str, i:int,j:int):
-    aux = lista [i] [clave]
-    lista [i] [clave] = lista [j] [clave]
-    lista [j] [clave] = aux
 
 def promediar_notas (datos:list):
 
