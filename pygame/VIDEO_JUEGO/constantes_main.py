@@ -4,12 +4,12 @@ import pygame
 ALTO_VENTANA = int(1000)
 ANCHO_VENTANA = int(1000)
 
-# Estados del juego
-ESTADO_MENU = "menu"
-ESTADO_NOMBRE = "nombre"
-ESTADO_JUGANDO = "jugando"
-ESTADO_PUNTOS = "puntos"
-ESTADO_GAME_OVER = "game_over"
+# Pantallas del juego
+pantalla_menu = "menu"
+pantalla_nombre = "nombre"
+pantalla_jugando = "jugando"
+pantalla_score = "puntos"
+pantalla_game_over = "game_over"
 
 #COLORES
 BLACK = (0, 0, 0)

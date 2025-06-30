@@ -10,11 +10,12 @@ from score import *
 
 '''Falta:
 
-    Modularizar el menu
     Anadir sonido 
-    Mostrar preguntas
     Acceder al menu en todo momento
+    movimiento
     Cronometro
+    fin del juego
+    ciudadanos primera clases
     Ordenar lista de puntaje
 
 '''
@@ -29,47 +30,41 @@ clock = pygame.time.Clock()
 FUENTE = pygame.font.SysFont("Arial", 30)
 
 #Variables de estado
-estado_actual = ESTADO_MENU
+pantalla_actual = pantalla_menu
 running = True
-nombre = None
+txt_nombre = ""
 respuesta_correcta = None
 posicion_jugador = 15
+resultado_ronda = None
+lista_posicion = []
 
 while running == True:
 
     lista_eventos = pygame.event.get ()
-    
     for evento in lista_eventos:
 
         if evento.type == pygame.QUIT:
             running = False
 
-        elif evento.type == pygame.MOUSEBUTTONDOWN:
+        if evento.type == pygame.MOUSEBUTTONDOWN:
                 lista_posicion = list (evento.pos)
+        
+        match pantalla_actual:
 
-                match estado_actual:
-
-                    case False:
+            case False:
                         running = False
-
-                    case "menu": 
-                        estado_actual = generar_menu(evento, lista_posicion, screen, estado_actual)
-
-                    case "nombre":
-
-                        nombre = correr_pantalla_nombre(screen, lista_eventos, WHITE, BLACK, FUENTE)
-            
-                        if nombre != None: 
-                            nombre = nombre
-                            estado_actual = ESTADO_JUGANDO
-
-                    case "jugando":
+            case "menu": 
+                        pantalla_actual = generar_menu(evento, lista_posicion, screen, pantalla_actual)
+            case "nombre":
+                lista_nombre = correr_pantalla_nombre(screen, evento, WHITE, BLACK, FUENTE, txt_nombre)
+                txt_nombre = lista_nombre [0]
+                nombre_final = lista_nombre [1]
+                if nombre_final != "":
+                    pantalla_actual = pantalla_jugando
+            case "jugando":
                         existencia = verificar_existencia (preguntas_c)
-
-                        if existencia:
+                        if existencia == True:
                             respuesta_correcta = mostrar_preguntas(screen, FUENTE, BLACK, preguntas_c)
-                            esperando_respuesta = True
-
                             match respuesta_correcta:
                                 case "a":
                                     rect_correcto = rect_a
@@ -83,23 +78,21 @@ while running == True:
                                     rect_correcto = rect_c
                                     rect_incorrecto1 = rect_a
                                     rect_incorrecto2 = rect_b
-
                             if respuesta_correcta != None:
                                 resultado_ronda = verificar_respuesta (evento, lista_posicion, rect_correcto, rect_incorrecto1, rect_incorrecto2)
-                    
                         if resultado_ronda != None:
                             print (resultado_ronda)
-
                         else:
-                            estado_actual = ESTADO_GAME_OVER
-
-                    case "puntos":
+                            pantalla_actual = pantalla_game_over
+            case "puntos":
                         mostrar_score (screen, FUENTE, WHITE)
-
-                    case "game_over":
+            case "game_over":
                         print ("f")
                         running = False
-    
+                
+        
+
+
     pygame.display.flip()
     clock.tick(60)
 
