@@ -1,6 +1,5 @@
 import pygame
 
-
 def verificar_existencia (lista: list) -> bool:
 
     '''La funcion verifica que la lista no este vacia.

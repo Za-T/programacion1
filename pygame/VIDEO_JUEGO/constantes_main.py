@@ -25,3 +25,5 @@ rect_a = pygame.Rect(35, 122.5, 300, 50)
 rect_b = pygame.Rect(350, 122.5, 300, 50)
 rect_c = pygame.Rect(655, 122.5, 300, 50)
 
+dict_rect = {"a": rect_a, "b": rect_b, "c": rect_c}
+

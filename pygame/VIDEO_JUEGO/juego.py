@@ -9,7 +9,6 @@ from preguntas import *
 from score import *
 
 '''Falta:
-
     Anadir sonido 
     Acceder al menu en todo momento
     movimiento
@@ -17,84 +16,65 @@ from score import *
     fin del juego
     ciudadanos primera clases
     Ordenar lista de puntaje
-
 '''
 
-#INICIALIZAR
-pygame.init()
-screen = pygame.display.set_mode ([ANCHO_VENTANA, ALTO_VENTANA]) #tama;o pantalla
-pygame.display.set_caption("Serpientes y escaleras") #titulo
-clock = pygame.time.Clock()
+def jugar_sye ():
 
-#Fuente
-FUENTE = pygame.font.SysFont("Arial", 30)
+    #Incializar
+    pygame.init()
+    screen = pygame.display.set_mode ([ANCHO_VENTANA, ALTO_VENTANA]) #tama;o pantalla
+    pygame.display.set_caption("Serpientes y escaleras") #titulo
+    clock = pygame.time.Clock()
+    #Fuente
+    FUENTE = pygame.font.SysFont("Arial", 30)
+    #Pantalla
+    pantalla_actual = pantalla_menu
+    running = True
+    #Nombre
+    txt_nombre = ""
+    #Posicion Mouse
+    lista_posicion = []
+    #Tablero
+    correr_tablero = True
+    gestion_preguntas = [True, None, None, None]
+    resultado_ronda = None
+    posicion_jugador = 15
 
-#Variables de estado
-pantalla_actual = pantalla_menu
-running = True
-txt_nombre = ""
-respuesta_correcta = None
-posicion_jugador = 15
-resultado_ronda = None
-lista_posicion = []
+    while running == True:
 
-while running == True:
+        lista_eventos = pygame.event.get ()
+        for evento in lista_eventos:
 
-    lista_eventos = pygame.event.get ()
-    for evento in lista_eventos:
+            if evento.type == pygame.QUIT:
+                running = False
 
-        if evento.type == pygame.QUIT:
-            running = False
+            if evento.type == pygame.MOUSEBUTTONDOWN:
+                    lista_posicion = list (evento.pos)
+            
+            match pantalla_actual:
 
-        if evento.type == pygame.MOUSEBUTTONDOWN:
-                lista_posicion = list (evento.pos)
-        
-        match pantalla_actual:
+                case False:
+                            running = False
+                case "menu": 
+                            pantalla_actual = generar_menu(evento, lista_posicion, screen, pantalla_actual)
+                case "nombre":
+                    lista_nombre = correr_pantalla_nombre(screen, evento, WHITE, BLACK, FUENTE, txt_nombre)
+                    txt_nombre = lista_nombre [0]
+                    nombre_final = lista_nombre [1]
+                    if nombre_final != "":
+                        pantalla_actual = pantalla_jugando
+                case "jugando":
+                        if correr_tablero == True:
+                                lista_tablero = manejar_tablero(preguntas_c, dict_rect, screen, evento, lista_posicion, gestion_preguntas, FUENTE, BLACK)
+                                correr_tablero = lista_tablero [0]
+                case "puntos":
+                            mostrar_score (screen, FUENTE, WHITE)
+                case "game_over":
+                            running = False
 
-            case False:
-                        running = False
-            case "menu": 
-                        pantalla_actual = generar_menu(evento, lista_posicion, screen, pantalla_actual)
-            case "nombre":
-                lista_nombre = correr_pantalla_nombre(screen, evento, WHITE, BLACK, FUENTE, txt_nombre)
-                txt_nombre = lista_nombre [0]
-                nombre_final = lista_nombre [1]
-                if nombre_final != "":
-                    pantalla_actual = pantalla_jugando
-            case "jugando":
-                        existencia = verificar_existencia (preguntas_c)
-                        if existencia == True:
-                            respuesta_correcta = mostrar_preguntas(screen, FUENTE, BLACK, preguntas_c)
-                            match respuesta_correcta:
-                                case "a":
-                                    rect_correcto = rect_a
-                                    rect_incorrecto1 = rect_b
-                                    rect_incorrecto2 = rect_c
-                                case "b":
-                                    rect_correcto = rect_b
-                                    rect_incorrecto1 = rect_a
-                                    rect_incorrecto2 = rect_c
-                                case "c":
-                                    rect_correcto = rect_c
-                                    rect_incorrecto1 = rect_a
-                                    rect_incorrecto2 = rect_b
-                            if respuesta_correcta != None:
-                                resultado_ronda = verificar_respuesta (evento, lista_posicion, rect_correcto, rect_incorrecto1, rect_incorrecto2)
-                        if resultado_ronda != None:
-                            print (resultado_ronda)
-                        else:
-                            pantalla_actual = pantalla_game_over
-            case "puntos":
-                        mostrar_score (screen, FUENTE, WHITE)
-            case "game_over":
-                        print ("f")
-                        running = False
-                
-        
+        pygame.display.flip()
+        clock.tick(60)
 
+    pygame.quit()
 
-    pygame.display.flip()
-    clock.tick(60)
-
-
-pygame.quit()
+jugar_sye ()
