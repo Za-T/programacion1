@@ -17,15 +17,15 @@ def manejar_tablero (preguntas_c, dict_rect, screen, evento, lista_posicion, ges
 
             pregunta = random.choice(preguntas_c) # Variable local temporal
 
-            timer_segundos = pygame.USEREVENT + 1
-            pygame.time.set_timer(timer_segundos, 45000)
-
             respuesta_correcta = mostrar_preguntas(pregunta, screen, FUENTE, COLOR_PREGUNTAS)
             gestionar_preguntas [1] = pregunta # Guarda la pregunta actual
             gestionar_preguntas[3] = respuesta_correcta # Guarda la respuesta correcta
 
         else: # Si ya hay una pregunta activa
 
+            timer_segundos = pygame.USEREVENT + 1
+            pygame.time.set_timer(timer_segundos, 45000)
+            
             # Renderizar la pregunta activa en cada frame
             mostrar_preguntas(gestionar_preguntas[1], screen, FUENTE, COLOR_PREGUNTAS)
 

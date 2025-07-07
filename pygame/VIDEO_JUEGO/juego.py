@@ -60,13 +60,15 @@ def jugar_sye ():
                 case "nombre":
                     lista_nombre = correr_pantalla_nombre(screen, evento, WHITE, BLACK, FUENTE, txt_nombre)
                     txt_nombre = lista_nombre [0]
-                    nombre_final = lista_nombre [1]
+                    nombre_final = lista_nombre [1] 
                     if nombre_final != "":
                         pantalla_actual = pantalla_jugando
                 case "jugando":
                         if correr_tablero == True:
                                 lista_tablero = manejar_tablero(preguntas_c, dict_rect, screen, evento, lista_posicion, gestion_preguntas, FUENTE, BLACK)
                                 correr_tablero = lista_tablero [0]
+                        else:
+                               pantalla_actual = "game_over"
                 case "puntos":
                             mostrar_score (screen, FUENTE, WHITE)
                 case "game_over":
