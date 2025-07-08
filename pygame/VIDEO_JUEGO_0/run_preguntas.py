@@ -107,6 +107,7 @@ def manejar_tablero (screen, preguntas_c, tablero, reloj, gestion_tablero:list, 
 
     if evento.type == pygame.MOUSEBUTTONDOWN:
         if rect_tablero_salir.collidepoint(lista_posicion):
+            gestion_tablero [5] = "game_over"
             gestion_tablero [0] = False
 
     existencia = verificar_existencia (preguntas_c)
@@ -149,6 +150,7 @@ def manejar_tablero (screen, preguntas_c, tablero, reloj, gestion_tablero:list, 
                             preguntas_c.remove(pregunta)
     else:
         informar_inexistencia (screen, fuente)
+        gestion_tablero [5] = "game_over"
         gestion_tablero [0] = False #si no hya mas preguntas, terminar juego
         
     return gestion_tablero      

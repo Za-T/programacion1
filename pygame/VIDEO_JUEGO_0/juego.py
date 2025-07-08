@@ -42,8 +42,8 @@ def jugar_sye():
     lista_posicion = []
     
     #Tablero
-    #0.correr tablero, 1.pregunta elegida, 2.posicion jugador, 3.respuesta jugador, 4.resultado pregunta
-    gestion_tablero = [True, None, 15, None, False]
+    #0.correr tablero, 1.pregunta elegida, 2.posicion jugador, 3.respuesta jugador, 4.resultado pregunta, 5. cambiar pantalla
+    gestion_tablero = [True, None, 15, None, False, "jugando"]
     correr_tablero = gestion_tablero [0]
     resultado_ronda = None
 
@@ -78,6 +78,7 @@ def jugar_sye():
                         gestionar_tablero = manejar_tablero(screen, preguntas_c, tablero, reloj, gestion_tablero, FUENTE, evento, lista_posicion)
                         correr_tablero = gestionar_tablero[0]
                         posicion_jugador = gestion_tablero [2]
+                        pantalla_actual = gestionar_tablero [5]
                         
                     else:
                         pantalla_actual = "game_over"
