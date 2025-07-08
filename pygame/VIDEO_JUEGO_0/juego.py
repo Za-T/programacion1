@@ -73,10 +73,12 @@ def jugar_sye():
                         pantalla_actual = lista_menu[1]
                         
                 case "jugando":
+
                     if correr_tablero == True:
                         gestionar_tablero = manejar_tablero(screen, preguntas_c, tablero, reloj, gestion_tablero, FUENTE, evento, lista_posicion)
                         correr_tablero = gestionar_tablero[0]
                         posicion_jugador = gestion_tablero [2]
+                        
                     else:
                         pantalla_actual = "game_over"
                         

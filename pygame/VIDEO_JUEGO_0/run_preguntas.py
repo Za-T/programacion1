@@ -84,6 +84,15 @@ def calcular_posicion (respuesta_c, respuesta_j, posicion_j:int, tablero: list, 
 
     return posicion_j
 
+def informar_inexistencia (screen, fuente):
+
+    mensaje = "No hay mas preguntas. Juego terminado"
+    txt_mensaje = fuente.render(str(mensaje), True, BLACK)
+
+    pygame.draw.rect(screen, WHITE, rect_resultado)
+    pygame.draw.rect(screen, WHITE, rect_b)
+    screen.blit(txt_mensaje,(x_pregunta, y_pregunta))
+
 #def dibujar_posicion ():
 
 def manejar_tablero (screen, preguntas_c, tablero, reloj, gestion_tablero:list, fuente, evento, lista_posicion: list):
@@ -102,7 +111,7 @@ def manejar_tablero (screen, preguntas_c, tablero, reloj, gestion_tablero:list, 
 
     existencia = verificar_existencia (preguntas_c)
 
-    if existencia == True and gestion_tablero[0] == True:
+    if existencia == True:
 
         if gestion_tablero [1] == None: #si no hay pregunta, elegirla
             pregunta = random.choice(preguntas_c)
@@ -133,11 +142,13 @@ def manejar_tablero (screen, preguntas_c, tablero, reloj, gestion_tablero:list, 
 
                 else:#una vez se mostro el resultado
                     if evento.type == pygame.MOUSEBUTTONDOWN:
-                        if rect_c.collidepoint(lista_posicion):
-                            preguntas_c.remove(pregunta)
+                        if rect_b.collidepoint(lista_posicion):
                             gestion_tablero [1] = None #elegir pregunta nueva
-
+                            gestion_tablero [3] = None #reinicir respuesta jugador
+                            gestion_tablero [4] = False #reiniciar resultado
+                            preguntas_c.remove(pregunta)
     else:
+        informar_inexistencia (screen, fuente)
         gestion_tablero [0] = False #si no hya mas preguntas, terminar juego
-
+        
     return gestion_tablero      
