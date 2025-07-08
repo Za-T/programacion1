@@ -42,8 +42,8 @@ def jugar_sye():
     lista_posicion = []
     
     #Tablero
-    #0.correr tablero, 1.pregunta elegida, 2.posicion jugador,
-    gestion_tablero = [True, None, 15, None]
+    #0.correr tablero, 1.pregunta elegida, 2.posicion jugador, 3.respuesta jugador, 4.resultado pregunta
+    gestion_tablero = [True, None, 15, None, False]
     correr_tablero = gestion_tablero [0]
     resultado_ronda = None
 

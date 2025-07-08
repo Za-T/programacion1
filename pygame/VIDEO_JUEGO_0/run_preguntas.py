@@ -36,10 +36,21 @@ def obtener_respuesta_j (evento, lista_posicion:list)->str:
             retorno = "c"
     
     return retorno
-                
-def calcular_posicion (respuesta_c, respuesta_j, posicion_j:int, tablero: list, screen, fuente):
+
+def procesar_resultado (respuesta_c, respuesta_j) -> bool:
     
-    mensaje = None 
+    print (respuesta_j)
+    if respuesta_j == respuesta_c:
+        resultado_ronda = True
+    else:
+        resultado_ronda = False
+    
+    return resultado_ronda
+                
+def calcular_posicion (respuesta_c, respuesta_j, posicion_j:int, tablero: list, screen, fuente) -> int:
+    
+    mensaje = None
+    txt_siguiente = "SIGUIENTE"
 
     if posicion_j != 0 and posicion_j != 30:
        
@@ -48,19 +59,30 @@ def calcular_posicion (respuesta_c, respuesta_j, posicion_j:int, tablero: list, 
             posicion_j += 1
 
             if tablero [posicion_j] != 0:
-                mensaje = f"Caiste en escalera, adelantas {tablero [posicion_j]} casilleros."
+                mensaje = f"Correcto! Caiste en escalera, adelantas {tablero [posicion_j]} casilleros extra."
                 posicion_j += tablero [posicion_j]
-
+            else:
+                mensaje = "Correcto! Adelantas 1 casillero."
         else:
             posicion_j -= 1
             if tablero [posicion_j] != 0:            
-                mensaje = f"Caiste en serpiente, regresas {tablero [posicion_j]} casilleros."
+                mensaje = f"Incorrecto! Caiste en serpiente, regresas {tablero [posicion_j]} casilleros extra."
                 posicion_j -= tablero [posicion_j]
+            else:
+                mensaje = "Incorrecto! Regresas 1 casillero."
+        
+        if mensaje != None:
+            txt_mensaje = fuente.render(str(mensaje), True, BLACK)
+            txt_siguiente = fuente.render(txt_siguiente, True, BLACK)
+            pygame.draw.rect(screen, WHITE, rect_resultado)
+            pygame.draw.rect(screen, WHITE, rect_a)
+            pygame.draw.rect(screen, WHITE, rect_b)
+            pygame.draw.rect(screen, WHITE, rect_c)
 
-        txt_mensaje = fuente.render(str(mensaje), True, BLACK)
+            screen.blit(txt_mensaje,(x_pregunta, y_pregunta))
+            screen.blit(txt_siguiente,(x_medio, y))
 
-        pygame.draw.rect(screen, WHITE, rect_resultado)
-        screen.blit(txt_mensaje,(x_pregunta, y_pregunta))
+    return posicion_j
 
 #def dibujar_posicion ():
 
@@ -72,7 +94,6 @@ def manejar_tablero (screen, preguntas_c, tablero, reloj, gestion_tablero:list, 
     "si es con el incorrecto vuelve para atras"
     "En caso de que el timer (20 seg) se acaba y no hubo una colision, se toma como respuesta incorrecta"
 
-    atribuir_fondo ("imagenes/tablero.png",screen)
     posicion_j = gestion_tablero [2]
 
     if evento.type == pygame.MOUSEBUTTONDOWN:
@@ -86,22 +107,37 @@ def manejar_tablero (screen, preguntas_c, tablero, reloj, gestion_tablero:list, 
         if gestion_tablero [1] == None: #si no hay pregunta, elegirla
             pregunta = random.choice(preguntas_c)
             gestion_tablero [1] = pregunta
+            atribuir_fondo ("imagenes/tablero.png",screen)
 
         else: #hay pregunta elegida
             pregunta = gestion_tablero [1]
             timer_event = pygame.USEREVENT + 1 #configurar timer
             pygame.time.set_timer(timer_event, 1000)
 
-            mostrar_pregunta (screen, pregunta, fuente, BLACK) #solo imprime la pregunta durante lo que dure el timer, o hasta que haya una colicion
+            if gestion_tablero [3] == None: #mostrar la pregunta lo que dure el timer, o hasta que haya una colicion
+                mostrar_pregunta (screen, pregunta, fuente, BLACK) 
 
             respuesta_c = gestion_tablero [1] ["respuesta_correcta"]
-            respuesta_j = obtener_respuesta_j(evento, lista_posicion) 
+            respuesta_j = obtener_respuesta_j(evento, lista_posicion)
+            
+            if gestion_tablero [3] == None: #si no hay respuesta elegida, guardar None
+                gestion_tablero [3] = respuesta_j
 
-            if respuesta_j != None:
-                posicion_j = calcular_posicion (respuesta_c, respuesta_j, posicion_j, tablero, screen, fuente)
+            else: #una vez que deja de ser None
+                respuesta_j = gestion_tablero [3] #respuesta del jugador
+
+                if gestion_tablero[4] == False:  # Si no se ha mostrado el resultado
+                    posicion_j = calcular_posicion(respuesta_c, respuesta_j, posicion_j, tablero, screen, fuente)
+                    gestion_tablero[2] = posicion_j
+                    gestion_tablero[4] = True  # Marcar que ya se mostró el resultado
+
+                else:#una vez se mostro el resultado
+                    if evento.type == pygame.MOUSEBUTTONDOWN:
+                        if rect_c.collidepoint(lista_posicion):
+                            preguntas_c.remove(pregunta)
+                            gestion_tablero [1] = None #elegir pregunta nueva
 
     else:
         gestion_tablero [0] = False #si no hya mas preguntas, terminar juego
 
-    return gestion_tablero        
-    
+    return gestion_tablero      
