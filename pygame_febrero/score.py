@@ -45,5 +45,7 @@ def mostrar_score (screen, fuente, color):
             posc_imp = [x_der,y_der]
             
         screen.blit(txt_resultado_n,posc_imp)
+
     
+
     pygame.display.flip()

@@ -23,6 +23,8 @@ def jugar_sye():
 
     #Incializar
     pygame.init()
+    
+
     screen = pygame.display.set_mode([ANCHO_VENTANA, ALTO_VENTANA])  # tamaño pantalla
     pygame.display.set_caption("Serpientes y escaleras")  # titulo
     reloj = pygame.time.Clock()

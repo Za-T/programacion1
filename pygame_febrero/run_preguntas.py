@@ -51,6 +51,7 @@ def calcular_posicion (respuesta_c, respuesta_j, posicion_j:int, tablero: list, 
     
     mensaje = None
     txt_siguiente = "SIGUIENTE"
+    
 
     if posicion_j != 0 and posicion_j != 30:
        
@@ -58,13 +59,19 @@ def calcular_posicion (respuesta_c, respuesta_j, posicion_j:int, tablero: list, 
 
             posicion_j += 1
 
+            sfx_correcto.play()
+
             if tablero [posicion_j] != 0:
                 mensaje = f"Correcto! Caiste en escalera, adelantas {tablero [posicion_j]} casilleros extra."
                 posicion_j += tablero [posicion_j]
             else:
                 mensaje = "Correcto! Adelantas 1 casillero."
         else:
+
             posicion_j -= 1
+
+            sfx_incorrecto.play()
+
             if tablero [posicion_j] != 0:            
                 mensaje = f"Incorrecto! Caiste en serpiente, regresas {tablero [posicion_j]} casilleros extra."
                 posicion_j -= tablero [posicion_j]
@@ -106,9 +113,8 @@ def manejar_tablero (screen, preguntas_c, tablero, reloj, gestion_tablero:list, 
     posicion_j = gestion_tablero [2]
 
     if evento.type == pygame.MOUSEBUTTONDOWN:
-        if rect_tablero_salir.collidepoint(lista_posicion):
-            gestion_tablero [5] = "game_over"
-            gestion_tablero [0] = False
+        if rect_volver_menu.collidepoint(lista_posicion):
+            gestion_tablero [5] = "menu"
 
     existencia = verificar_existencia (preguntas_c)
 

@@ -1,5 +1,7 @@
 import pygame
 
+pygame.mixer.init()
+
 #MEDIDIAS
 ALTO_VENTANA = int(1000)
 ANCHO_VENTANA = int(1000)
@@ -35,10 +37,13 @@ rect_a = pygame.Rect(45, 130, 284, 33.2)
 rect_b = pygame.Rect(360, 130, 284, 33.2)
 rect_c = pygame.Rect(670, 130, 284, 33.2)
 
-rect_tablero_salir = pygame.Rect(942, 1, 59.7, 59.7)
+rect_volver_menu = pygame.Rect(942, 1, 59.7, 59.7)
 
 dict_rect = {"a": rect_a, "b": rect_b, "c": rect_c}
 
-#TIMER
+#SONIDO
+sfx_correcto = pygame.mixer.Sound("sonido/correcto.mp3")
+sfx_incorrecto = pygame.mixer.Sound("sonido/incorrecto.mp3")
 
+#TIMER
 SEGUNDOS = 20
